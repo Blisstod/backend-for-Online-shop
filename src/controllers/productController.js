@@ -14,7 +14,8 @@ class ProductController {
 
     async productsBySearch(req, res, next) {
         try {
-            const data = await productsApi.productBySearch(req.body);
+            const { query } = req.params;
+            const data = await productsApi.productBySearch(query);
             return res.json(data);
         } catch (error) {
             next(ApiError.internal(error.message));
@@ -23,7 +24,8 @@ class ProductController {
 
     async getProductsByCategory(req, res, next) {
         try {
-            const data = await productsApi.getProductsByCategory(req.body);
+            const { category } = req.params;
+            const data = await productsApi.getProductsByCategory(category);
             return res.json(data);
         } catch (error) {
             next(ApiError.internal(error.message));

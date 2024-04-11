@@ -14,7 +14,7 @@ const generateJwt = (id, email, role) => {
 class AuthController {
     async login(req, res, next){
         const {email, password} = req.body;
-        const user = await User.findOne({where: {email}})
+        const user = await User.findOne({email})
         if (!user){
             return next(ApiError.notFound('User not found'))
         }
@@ -32,7 +32,7 @@ class AuthController {
         if (!email || !password){
             return next(ApiError.unauthorized('Incorrect email or password!'))
         }
-        const exists = await User.findOne({ where: { email: email } });
+        const exists = await User.findOne({ email } );
         if(exists){
             return next(ApiError.conflict('User this Email already exists!'))
         }
