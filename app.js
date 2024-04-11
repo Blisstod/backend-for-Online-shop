@@ -17,8 +17,15 @@ app.use(cors({
 }))
 app.use('/', router);
 
-connectDB();
+const start = async () => {
+    try{
+        await connectDB();
+        app.listen(port, () => {
+            console.log(`Server is listening on port ${port}`)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
-})
+start()

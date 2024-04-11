@@ -31,6 +31,16 @@ class ProductController {
             next(ApiError.internal(error.message));
         }
     }
+
+    async getProductById(req, res, next) {
+        try{
+            const productId = req.params.id;
+            const product = await productsApi.getProductById(productId);
+            res.json(product)
+        } catch (error) {
+            next(ApiError).internal(error.message);
+        }
+    }
 }
 
 module.exports = new ProductController();
