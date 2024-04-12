@@ -49,8 +49,13 @@ const deletedUserSchema = new mongoose.Schema({
     deletedAt: {
         type: Date,
         required: true
-    }
-}, {
+    },
+    basket: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Basket'
+    },
+},
+    {
     timestamps: true
 });
 

@@ -4,7 +4,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 router = express.Router();
 
-// router.use(authMiddleware)
+router.use(authMiddleware)
 
 router.get('/', productController.getAllProducts)
 router.get('/search/:query', productController.productsBySearch)

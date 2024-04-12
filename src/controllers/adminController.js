@@ -7,7 +7,7 @@ class AdminController {
         try {
             const users = await User.find({})
             const deletedUsers = await DeletedUser.find({});
-            res.json(users, deletedUsers)
+            res.json({ users, deletedUsers })
         } catch (error) {
             return next(ApiError.internal(error.message));
         }

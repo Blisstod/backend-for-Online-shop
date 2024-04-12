@@ -18,7 +18,7 @@ class AuthController {
         if (!user){
             return next(ApiError.notFound('User not found'))
         }
-        let comparePassword = bcrypt.compare(password, user.password)
+        let comparePassword = await bcrypt.compare(password, user.password)
         if(!comparePassword){
             return next(ApiError.unauthorized('Incorrect password'))
         }
